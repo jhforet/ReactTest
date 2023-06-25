@@ -10,12 +10,6 @@ const NavBar = () => {
         setIsOpen(newIsOpen);
     }
 
-    const closeDropdown = (index) => {
-        const newIsOpen = [...isOpen];
-        newIsOpen[index] = true;
-        setIsOpen(newIsOpen);
-    }
-
     return (
         <nav>
             <div className="relative mx-auto max-w-screen-xl h-20 flex justify-between">
