@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavBar from './components/Navbar';
+import routes from './routes';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className=" bg-slate-600">
+      <Router>
+        <NavBar />
+        <Routes>
+          {routes.map((route) => {
+            return <Route
+              key={route.path}
+              path={route.path}
+              element={<route.component />}
+            />
+          })}
+        </Routes>
+        <h1>hello World</h1>
+        <div className="justify-between">
+          <div className="w-1/3 h-96 m-1 bg-white shadow rounded row-span-2" />
+          <div className="w-1/3 h-96 m-1 bg-white shadow rounded row-span-2" />
+          <div className="w-1/3 h-96 m-1 bg-white shadow rounded row-span-2" />
+          <div className="w-1/3 h-96 m-1 bg-white shadow rounded row-span-2" />
+          <div className="w-1/3 h-96 m-1 bg-white shadow rounded row-span-2" />
+          <div className="w-1/3 h-96 m-1 bg-white shadow rounded row-span-2" />
+        </div>
+      </Router>
     </div>
   );
 }
