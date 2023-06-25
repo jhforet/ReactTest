@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/Navbar';
 import routes from './routes';
 
+// https://inpa.tistory.com/
 function App() {
   return (
     <div className=" bg-slate-600">
