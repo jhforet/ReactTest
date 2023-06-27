@@ -6,7 +6,7 @@ import routes from './routes';
 // https://inpa.tistory.com/
 function App() {
   return (
-    <div className=" bg-slate-600">
+    <div>
       <Router>
         <NavBar />
         <Routes>
