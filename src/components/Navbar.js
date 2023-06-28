@@ -27,9 +27,7 @@ const NavBar = () => {
                             className="fill-current h-4 w-4 ml-2"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
-                        >
-                            <path d="M5 7 l5 5 5-5H5z" />
-                        </svg>
+                        ><path d="M5 7 l5 5 5-5H5z" /></svg>
                     </button>
                     {isOpen[0] && (
                         <div
