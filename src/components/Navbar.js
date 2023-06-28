@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
+import IconList from "./SvgIcon";
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState([false, false]);
+
+    const mdNavLinkStyles = "block px-4 py-2 font-semibold hover:text-cyan-400"
 
     const toggleDropdown = (index) => {
         const newIsOpen = [...isOpen];
@@ -12,55 +15,55 @@ const NavBar = () => {
 
     return (
         <nav>
-            <div className="relative mx-auto max-w-screen-xl h-20 flex justify-between">
-                <div
-                    onMouseLeave={() => toggleDropdown(0)}
-                    className="inline-flex">
+            <div className="relative h-16 mx-auto max-w-screen-xl flex align-middle justify-between border border-red-500 md:w-auto">
+
+                {/* 좌측에 배치되는 버튼 */}
+                <div className="flex  items-center text-gray-800 text-lg font-bold">
+                    <Link className="mr-3 border border-red-500" to='/'>홈페이지로고</Link>
+                    <NavLink className={({ isActive }) => isActive ? "p-3 hidden md:block text-cyan-300" : "p-3 hidden md:block hover:text-gray-600 border border-red-500"} to="/comingsoon">오픈예정</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "p-3 hidden md:block text-cyan-300" : "p-3 hidden md:block hover:text-gray-600 border border-red-500"} to="/blog">오픈예정</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "p-3 hidden md:block text-cyan-300" : "p-3 hidden md:block hover:text-gray-600 border border-red-500"} to="/b">오픈예정</NavLink>
+
+                </div>
+
+                {/* 우측에 배치되는 버튼 */}
+                <div className="flex items-center text-gray-400">
+                    <Link className="p-3 hidden md:block hover:text-gray-700" to='/login'>로그인</Link>
+                    <Link className="p-3 hidden md:block hover:text-gray-700" to='/'>회원가입</Link>
+                    <Link className="p-3 hidden md:block bg-cyan-300 rounded-md text-white font-semibold hover:bg-cyan-400" to='/'>프로젝트 만들기</Link>
+                </div>
+
+                {/* 모바일 화면에서 보이는 버튼 */}
+                <div className="flex items-center md:hidden">
+                    <Link className="p-3 flex border border-red-700">
+                        {IconList.find(icon => icon.name === 'userHome').icon()}
+                    </Link>
                     <button
                         onClick={() => toggleDropdown(0)}
-                        onMouseEnter={() => toggleDropdown(0)}
-                        // onMouseLeave={() => toggleDropdown(0)}
-                        className="text-gray-300 font-semibold inline-flex items-center hover:text-white focus:text-white"
+                        // onMouseEnter={() => toggleDropdown(0)} onMouseLeave={() => toggleDropdown(0)}
+                        className="pl-3 flex items-center border border-red-500"
                     >
-                        <span>메뉴</span>
-                        <svg
-                            className="fill-current h-4 w-4 ml-2"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                        ><path d="M5 7 l5 5 5-5H5z" /></svg>
+                        <span>더보기</span>
+                        {IconList.find(icon => icon.name === 'dropDown').icon()}
                     </button>
+
+                    {/* 토글다운 내용 */}
                     {isOpen[0] && (
                         <div
                             onClick={() => toggleDropdown(0)}
-                            onMouseLeave={() => toggleDropdown(0)}
-                            className="absolute left-0 top-20 w-48 bg-white rounded-md shadow-lg">
-                            <div className="m-3">
-                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:rounded-t-md">항목 1</a>
-                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">항목 2</a>
-                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:rounded-b-md">항목 3</a>
+                            // onMouseLeave={() => toggleDropdown(0)}
+                            className="absolute right-0 top-16 w-48 bg-white rounded-md shadow-lg">
+                            <div className="p-5 border border-red-500">
+                                <NavLink className={`${mdNavLinkStyles} border border-red-500`} to="/comingsoon">오픈예정</NavLink>
+                                <NavLink className={`${mdNavLinkStyles} border border-red-500`}  to="/blog">오픈예정</NavLink>
+                                <NavLink className={`${mdNavLinkStyles} border border-red-500`}  to="/b">오픈예정</NavLink>
+                                <hr />
+                                <NavLink className="block text-center px-4 py-2 rounded-md bg-cyan-300 text-white font-semibold hover:bg-cyan-400 " to="/b">오픈예정</NavLink>
                             </div>
                         </div>)}
                 </div>
-
-                <Link className="bg-blue-600" to='/'>홈페이지로고</Link>
-
-                <button onClick={() => toggleDropdown(1)}
-                    class="relative bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
-                    <span>토글 버튼</span>
-                    <svg class="fill-current h-4 w-4 ml-2" xmlns="http://www.w3.org/2001/svg" viewBox="0 0 20 20">
-                        <path d="M5 7 l5 5 5-5H5z" />
-                    </svg>
-                    {isOpen[1] && (<div class="absolute left-0 top-11 mt-2 w-48 bg-white rounded-md shadow-lg">
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">항목 1</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">항목 2</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">항목 3</a>
-                    </div>)}
-                </button>
-
-
-
-            </div>
-        </nav>
+            </div >
+        </nav >
     )
 };
 
