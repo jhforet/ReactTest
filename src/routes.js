@@ -1,5 +1,6 @@
 import HomePage from "./pages/HomePage";
-import ShowPage from "./pages/ShowPage";
+import CreatePage from "./pages/CreatePage";
+import RegistrationPage from "./pages/RegistrationPage";
 
 const routes = [
     {
@@ -7,8 +8,12 @@ const routes = [
         component: HomePage
     },
     {
-        path: '/blog',
-        component: ShowPage
+        path: '/registration',
+        component: RegistrationPage
+    },
+    {
+        path: '/createproject',
+        component: CreatePage
     }
 ];
 

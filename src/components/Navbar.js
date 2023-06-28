@@ -27,10 +27,10 @@ const NavBar = () => {
                 </div>
 
                 {/* 우측에 배치되는 버튼 */}
-                <div className="flex items-center text-gray-400">
+                <div className="flex items-center text-sm text-gray-400">
                     <Link className="p-3 hidden md:block hover:text-gray-700" to='/login'>로그인</Link>
                     <Link className="p-3 hidden md:block hover:text-gray-700" to='/'>회원가입</Link>
-                    <Link className="p-3 hidden md:block bg-cyan-300 rounded-md text-white font-semibold hover:bg-cyan-400" to='/'>프로젝트 만들기</Link>
+                    <Link className="p-3 hidden md:block bg-cyan-300 rounded-md text-white font-semibold hover:bg-cyan-400" to='/registration'>프로젝트 만들기</Link>
                 </div>
 
                 {/* 모바일 화면에서 보이는 버튼 */}
@@ -58,7 +58,7 @@ const NavBar = () => {
                                 <NavLink className={`${mdNavLinkStyles} border border-red-500`}  to="/blog">오픈예정</NavLink>
                                 <NavLink className={`${mdNavLinkStyles} border border-red-500`}  to="/b">오픈예정</NavLink>
                                 <hr />
-                                <NavLink className="block text-center px-4 py-2 rounded-md bg-cyan-300 text-white font-semibold hover:bg-cyan-400 " to="/b">오픈예정</NavLink>
+                                <NavLink className="block text-center px-4 py-2 rounded-md bg-cyan-300 text-white font-semibold hover:bg-cyan-400 " to="/registration">프로젝트 만들기</NavLink>
                             </div>
                         </div>)}
                 </div>
