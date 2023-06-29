@@ -2,47 +2,94 @@ import React, { useState, useEffect } from 'react';
 
 const Slideshow = ({ slides }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    //     }, 3000);
+
+    //     return () => clearInterval(interval);
+    // }, [slides.length]);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-        }, 3000);
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+        window.addEventListener('resize', handleResize);
 
-        return () => clearInterval(interval);
-    }, [slides.length]);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    // 반응형 보여주는 img 갯수 조절
+    const getImageCount = () => {
+        if (windowWidth <= 640) {
+            return 1
+        } else if (windowWidth <= 1024) {
+            return 3
+        } else {
+            return 5
+        };
+    };
+
+    // 반응형 이미지 style 설정
+    const imgStyle = (index) => {
+        if (windowWidth <= 640) {
+            if (index === 0) {
+                return 'w-full h-auto'
+            } else {
+                return 'w-2/3 m-auto opacity-50'
+            }
+        } else if (windowWidth <= 1024) {
+            if (index === 1) {
+                return 'w-full h-auto'
+            } else {
+                return 'w-2/3 m-auto opacity-50'
+            }
+        } else {
+            if (index === 2) {
+                return 'w-full h-auto'
+            } else {
+                return 'w-2/3 m-auto opacity-50'
+            }
+        }
+    }
+
+    // 반응형 글씨 선택
+    const selectText = (index) => {
+        if (windowWidth <= 640) {
+            return index === 0
+        } else if (windowWidth <= 1024) {
+            return index === 1
+        } else {
+            return index === 2
+        }
+    }
+
+    const visibleSlides = slides.slice(0, getImageCount());
+    console.log(selectText)
+
+   
 
     return (
-        <div className='slideshow'>
-            {slides.map((slide, index) => (
-                <div>
-                    <p>메이커 <span>{slide.name}</span> 입니다.</p>
-                    <p>"{slide.text}"</p>
-                    <img src={slide.img} alt={slide.name} />
+        <div className='relative flex w-full mt-32'>
+            {visibleSlides.map((slide, index) => (
+                <div className={`${imgStyle(index)} mx-3 border border-red-700`}>
+                    {selectText(index) && (
+                        <div className='absolute inset-0 justify-center text-center'>
+                            <p className='text-lg lg:text-xl'>메이커 <span className='font-bold'>{slide.name}</span> 입니다.</p>
+                            <p className='sm:text-center text-xl lg:text-2xl font-bold mt-5'>"{slide.text}"</p>
+                        </div>
+                    )}
+                    <div className='mt-36 border border-red-700'>
+                        <img className='rounded-3xl m-auto' src={slide.img} alt={slide.name} />
+                    </div>
                 </div>
             ))}
         </div>
     );
 };
-
-// <div className="slideshow">
-//       <div className="flex relative h-full transition-transform duration-500 ease-in-out">
-//         {slides.map((slide, index) => (
-//           <div
-//             key={index}
-//             className={`flex-shrink-0 w-full h-full slide ${index === currentSlide ? 'active' : ''}`}
-//             style={{ backgroundImage: `url(${slide.img})` }}
-//           >
-//             <div className="absolute inset-0 flex items-center justify-center text-white text-center slide-content">
-//               <p className="text-lg font-bold">메이커 <span>{slide.name}</span> 입니다.</p>
-//               <p>{slide.text}</p>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex">
-//         <button className="px-4 py-2 mr-2 text-white bg-blue-500 rounded" onClick={handlePrevSlide}>&lt;</button>
-//         <button className="px-4 py-2 text-white bg-blue-500 rounded" onClick={handleNextSlide}>&gt;</button>
-//       </div>
-//     </div>
 
 export default Slideshow;
