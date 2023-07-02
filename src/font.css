@@ -1,0 +1,76 @@
+/* 폰트용 css 생성 index.js와 연결 */
+/* 가변폰트 애니메이션을 활용해보자 https://wit.nts-corp.com/2019/10/07/5686 */
+
+@font-face {
+    font-family: "SUIT Variable";
+    font-weight: 100 900;
+    src: local('SUIT Variable Regular') url("../public/fonts/SUIT-Variable.woff2") format('woff2-variations');
+}
+
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 100;
+    src: local('SUIT Thin'), url('../public/fonts/SUIT-Thin.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 200;
+    src: local('SUIT ExtraLight'), url('../public/fonts/SUIT-ExtraLight.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 300;
+    src: local('SUIT Light'), url('../public/fonts/SUIT-Light.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 400;
+    src: local('SUIT Regular'), url('../public/fonts/SUIT-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 500;
+    src: local('SUIT Medium'), url('../public/fonts/SUIT-Medium.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 600;
+    src: local('SUIT SemiBold'), url('../public/fonts/SUIT-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 700;
+    src: local('SUIT Bold'), url('../public/fonts/SUIT-Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 800;
+    src: local('SUIT ExtraBold'), url('../public/fonts/SUIT-ExtraBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 900;
+    src: local('SUIT Heavy'), url('../public/fonts/SUIT-Heavy.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Nanum Pen Script';
+    src: url('../public/fonts/NanumPenScript-Regular.ttf') format('truetype')
+}
+
+/* tailwind css를 사용중이라 사용하기 편하게 클래스로 지정 */
+.font-SUIT {
+    font-family: 'SUIT', sans-serif;
+}
+
+.font-NanumPenScript {
+    font-family: 'Nanum Pen Script', sans-serif;
+}

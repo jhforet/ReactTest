@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/Navbar';
 import routes from './routes';
+import MyComponent from './components/Sample';
 
 // https://inpa.tistory.com/
 function App() {
@@ -19,6 +20,7 @@ function App() {
           })}
         </Routes>
       </Router>
+      <MyComponent/>
     </div>
   );
 }
